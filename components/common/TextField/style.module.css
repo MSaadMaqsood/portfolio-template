@@ -1,0 +1,19 @@
+.inputField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputField label {
+  font-size: 16px;
+  color: #767676;
+}
+
+.inputField textarea {
+  font-size: 22px;
+  background-color: #f1f0f6;
+  outline: none;
+  border: none;
+  padding: 4px;
+  /* height: 46px; */
+}

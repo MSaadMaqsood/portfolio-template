@@ -1,0 +1,73 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+.titlecon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.titlecon h2 {
+  font-size: 32px;
+  text-align: center;
+}
+
+.titlecon label {
+  font-size: 15px;
+  color: #767676;
+  text-align: center;
+  width: 438px;
+}
+
+.content {
+  padding: 24px 12px;
+  display: flex;
+  flex-direction: row;
+  gap: 36px;
+}
+
+.content .row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background-color: #fff;
+  width: 310px;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 225px;
+  padding: 25px 0;
+}
+
+.content .row .right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.content .row h4 {
+  font-size: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+.content .row .right label {
+  font-size: 14px;
+  color: #767676;
+  cursor: pointer;
+  text-align: center;
+}
+
+.divider {
+  width: 100%;
+  background-color: #f1f0f6;
+  height: 2px;
+  border-radius: 2px;
+}

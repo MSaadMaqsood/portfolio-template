@@ -1,0 +1,27 @@
+.container {
+  width: 100%;
+  height: 500px;
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 120px;
+}
+
+.InfoCon{
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+
+.mainTitle{
+  font-weight: bold;
+  font-size: 48px;
+}
+
+.description{
+  font-size: 18px;
+  color: #767676;
+  font-weight: 400;
+}

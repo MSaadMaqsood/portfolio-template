@@ -1,0 +1,18 @@
+.container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.container h2 {
+  font-size: 32px;
+}
+
+.formContainer {
+  background-color: #fff;
+  padding: 32px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}

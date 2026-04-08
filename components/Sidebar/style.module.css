@@ -1,0 +1,121 @@
+.container {
+  width: 300px;
+  height: 100dvh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 40px;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.profileCon {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.profileImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: cadetblue;
+}
+.fullname {
+  text-align: center;
+  font-size: 18px;
+}
+
+.title {
+  text-align: center;
+  font-size: 15px;
+  color: #767676;
+}
+
+.socialIconsLst {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.socialIconsLst svg {
+  cursor: pointer;
+}
+
+.divider {
+  width: 100%;
+  height: 2px;
+  background-color: #f1f0f6;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.rowinfo {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.rowinfo .keyInfo {
+  background-color: var(--colorYellow);
+  font-size: 15px;
+  padding: 0 5px;
+}
+.rowinfo .valueInfo {
+  font-size: 15px;
+}
+
+.skillsCon {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.titleCon {
+  font-size: 18px;
+}
+.skillGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.skillRow {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skillLbl {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #767676;
+}
+
+.skillLbl label {
+  font-size: 15px;
+  color: #767676;
+}
+.perctBar {
+  width: 100%;
+  height: 6px;
+  border: 1px solid var(--colorYellow);
+  border-radius: 3px;
+  padding: 1px;
+  position: relative;
+}
+.perctBarInside {
+  background-color: var(--colorYellow);
+
+  border-radius: 1px;
+  height: 2px;
+}

@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+.titlecon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.titlecon h2 {
+  font-size: 32px;
+  text-align: center;
+}
+
+.titlecon label {
+  font-size: 15px;
+  color: #767676;
+  text-align: center;
+  width: 438px;
+}
+
+.content {
+  background-color: #fff;
+  padding: 64px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.content .row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+.content .row .left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 30%;
+}
+.content .row .right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 70%;
+  position: relative;
+
+}
+
+.content .row h4 {
+  font-size: 24px;
+}
+.detailsRow {
+  display: flex;
+  flex-direction: row;
+}
+.detailsRow label {
+  font-size: 16px;
+  width: 120px;
+}
+
+.detailsRow p {
+  font-size: 16px;
+  padding: 0 8px;
+  background-color: var(--colorYellow);
+}
+
+.content .row .right label {
+  font-size: 16px;
+  color: #767676;
+  width: 90%;
+}
+
+.divider {
+  width: 100%;
+  background-color: #f1f0f6;
+  height: 2px;
+  border-radius: 2px;
+}

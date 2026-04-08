@@ -1,0 +1,26 @@
+.page {
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #e5e5e5;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.pageCon {
+  width: calc(100dvw - 310px);
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0 30px;
+  gap: 120px;
+}
+
+.contactRow{
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  width: 100%;
+}
