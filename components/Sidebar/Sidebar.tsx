@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
 import FacebookIcon from "@/icons/facebookIcon";
@@ -57,7 +58,13 @@ const Sidebar = () => {
   return (
     <div className={style.container}>
       <div className={style.profileCon}>
-        <div className={style.profileImg}></div>
+        <div className={style.profileImg}>
+          <img
+            src={API + "/uploads/" + form.profile_image}
+            alt="Profile Preview"
+            className={style.image}
+          />
+        </div>
         <h4 className={style.fullname}>{form.fullname}</h4>
         <p className={style.title}>{form.position}</p>
         <div className={style.socialIconsLst}>
@@ -135,7 +142,10 @@ const Sidebar = () => {
         </div>
       </div>
       <div className={style.divider} />
-      <Button label="DOWNLOAD CV" endIcon={<DownloadIcon />} />
+      <Link href={"/login"}>
+        {" "}
+        <Button label="Login" endIcon={<DownloadIcon />} />{" "}
+      </Link>
     </div>
   );
 };

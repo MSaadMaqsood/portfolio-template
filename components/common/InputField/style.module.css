@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-bottom: 6px;
 }
 
 .inputField label {
@@ -10,7 +11,7 @@
 }
 
 .inputField input {
-  font-size: 22px;
+  font-size: 18px;
   background-color: #f1f0f6;
   outline: none;
   border: none;

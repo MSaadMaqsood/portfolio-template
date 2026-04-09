@@ -1,73 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
+type WorkType = {
+  id: number;
+  company: string;
+  start_date: string;
+  end_date: string;
+  title: string;
+  description: string;
+};
+const API = "http://localhost/portfolio-php";
 const WorkHistory = () => {
+  const userId = 1; // for now static (later from auth)
+
+  const [education, setEducation] = useState<WorkType[]>([]);
+  useEffect(() => {
+    fetch(`${API}/get-work.php?user_id=${userId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setEducation(data);
+      });
+  }, []);
   return (
     <div className={style.container}>
       <div className={style.titlecon}>
         <h2>Work History</h2>
-        <label>
+        {/* <label>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit. lorem ipsum
-        </label>
+        </label> */}
       </div>
 
       <div className={style.content}>
-        <div className={style.row}>
-          <div className={style.left}>
-            <h4>Company ABC</h4>
-            <div className={style.detailsRow}>
-              <label>Period</label>
-              <p>Jan 2025 - Dec 2026</p>
+        {education.map((edu, index) => (
+          <>
+            <div key={index} className={style.row}>
+              <div className={style.left}>
+                <h4>{edu.company}</h4>
+                <div className={style.detailsRow}>
+                  <label>Period</label>
+                  <p>
+                    {edu.start_date} - {edu.end_date}
+                  </p>
+                </div>
+              </div>
+              <div className={style.right}>
+                <h4>{edu.title}</h4>
+                <label>{edu.description}</label>
+              </div>
             </div>
-          </div>
-          <div className={style.right}>
-            <h4>Lead Web Designer</h4>
-            <label>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet
-              dapibus nibh ut faucibus nunc, egestas id amet porttitor. Pulvinar
-              quisque sed amet, nulla nunc. Eleifend sodales posuere fusce
-              tempus etiam et pellentesque. Molestie risus enim neque eget dui.
-            </label>
-          </div>
-        </div>
-        <div className={style.divider} />
-        <div className={style.row}>
-          <div className={style.left}>
-            <h4>Company ABC</h4>
-            <div className={style.detailsRow}>
-              <label>Period</label>
-              <p>Jan 2025 - Dec 2026</p>
-            </div>
-          </div>
-          <div className={style.right}>
-            <h4>Lead Web Designer</h4>
-            <label>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet
-              dapibus nibh ut faucibus nunc, egestas id amet porttitor. Pulvinar
-              quisque sed amet, nulla nunc. Eleifend sodales posuere fusce
-              tempus etiam et pellentesque. Molestie risus enim neque eget dui.
-            </label>
-          </div>
-        </div>
-        <div className={style.divider} />
-        <div className={style.row}>
-          <div className={style.left}>
-            <h4>Company ABC</h4>
-            <div className={style.detailsRow}>
-              <label>Period</label>
-              <p>Jan 2025 - Dec 2026</p>
-            </div>
-          </div>
-          <div className={style.right}>
-            <h4>Lead Web Designer</h4>
-            <label>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet
-              dapibus nibh ut faucibus nunc, egestas id amet porttitor. Pulvinar
-              quisque sed amet, nulla nunc. Eleifend sodales posuere fusce
-              tempus etiam et pellentesque. Molestie risus enim neque eget dui.
-            </label>
-          </div>
-        </div>
+            <div className={style.divider} />
+          </>
+        ))}
       </div>
     </div>
   );

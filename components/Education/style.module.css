@@ -30,12 +30,15 @@
   display: flex;
   flex-direction: column;
   gap: 36px;
+  width: 100%;
+
 }
 
 .content .row {
   display: flex;
   flex-direction: row;
   gap: 12px;
+  width: 100%;
 }
 .content .row .left {
   display: flex;

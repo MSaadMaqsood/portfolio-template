@@ -18,12 +18,12 @@ export default function Home() {
       <div className={style.pageCon}>
         <Intro />
         <Education />
-        <MyServices />
+        {/* <MyServices /> */}
         <WorkHistory />
         <Blogs />
         <div className={style.contactRow}>
           <ContactUs />
-          <ContactInfo />
+          {/* <ContactInfo /> */}
         </div>
         <Copyright />
       </div>

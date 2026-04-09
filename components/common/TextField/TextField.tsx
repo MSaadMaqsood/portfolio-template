@@ -5,10 +5,13 @@ const TextField = ({
   label,
   onChange,
   value,
+  rows = 8,
 }: {
   label: string;
   onChange: (t: string) => void;
   value: string;
+
+  rows?: number;
 }) => {
   return (
     <div className={style.inputField}>
@@ -17,7 +20,7 @@ const TextField = ({
       <textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        rows={8}
+        rows={rows}
       />
     </div>
   );

@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
 import Button from "../common/Button/Button";
 import SendIcon from "@/icons/SendIcon";
 import Image from "next/image";
+import Link from "next/link";
+const API = "http://localhost/portfolio-php";
+
 const Intro = () => {
+  const userId = 1; // for now static (later from auth)
+
+  const [form, setForm] = useState<any>({});
+
+  useEffect(() => {
+    fetch(`${API}/read.php?id=${userId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setForm(data.user || {});
+      });
+  }, []);
   return (
     <div className={style.container}>
       {" "}
@@ -16,14 +30,10 @@ const Intro = () => {
           </label>{" "}
           Expert!
         </label>
-
-        <h6 className={style.description}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing
-          <br /> elit. Et, volutpat feugiat placerat lobortis. Natoque <br />
-          rutrum semper sed suspendisse nunc lectus.
-        </h6>
-
-        <Button label="HIRE ME" endIcon={<SendIcon />} width="154px" />
+        <h6 className={style.description}>{form.bio}</h6>
+        <Link href={`/blogs`}>
+          <Button label="Blogs" endIcon={<SendIcon />} width="154px" />
+        </Link>
       </div>
       <div>
         <Image src={"/fullimg.png"} width={325} height={459} alt="" />

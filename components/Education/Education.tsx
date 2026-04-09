@@ -1,85 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
+type Education = {
+  id: number;
+  institute: string;
+  start_date: string;
+  end_date: string;
+  grade: string;
+  degree: string;
+  description: string;
+};
+const API = "http://localhost/portfolio-php";
+
 const Education = () => {
+  const userId = 1; // for now static (later from auth)
+  const [education, setEducation] = useState<Education[]>([]);
+  useEffect(() => {
+    fetch(`${API}/get-education.php?user_id=${userId}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setEducation(data);
+      });
+  }, []);
   return (
     <div className={style.container}>
       <div className={style.titlecon}>
         <h2>Education</h2>
-        <label>
+        {/* <label>
           Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
           sint. Velit officia consequat duis enim velit mollit. lorem ipsum
-        </label>
+        </label> */}
       </div>
-
       <div className={style.content}>
-        <div className={style.row}>
-          <div className={style.left}>
-            <h4>University of Toronto</h4>
-            <div className={style.detailsRow}>
-              <label>Student</label>
-              <p>Jan 2025 - Dec 2026</p>
+        {education.map((edu, index) => (
+          <>
+            <div key={index} className={style.row}>
+              <div className={style.left}>
+                <h4>{edu.institute}</h4>
+                <div className={style.detailsRow}>
+                  <label>Student</label>
+                  <p>
+                    {edu.start_date} - {edu.end_date}
+                  </p>
+                </div>
+                <div className={style.detailsRow}>
+                  <label>Grade</label>
+                  <p>{edu.grade}</p>
+                </div>
+              </div>
+              <div className={style.right}>
+                <h4>{edu.degree}</h4>
+                <label>{edu.description}</label>
+              </div>
             </div>
-            <div className={style.detailsRow}>
-              <label>Grade</label>
-              <p>3.0/4.0</p>
-            </div>
-          </div>
-          <div className={style.right}>
-            <h4>Certificate of web training</h4>
-            <label>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet
-              dapibus nibh ut faucibus nunc, egestas id amet porttitor. Pulvinar
-              quisque sed amet, nulla nunc. Eleifend sodales posuere fusce
-              tempus etiam et pellentesque. Molestie risus enim neque eget dui.
-            </label>
-          </div>
-        </div>
-        <div className={style.divider} />
-        <div className={style.row}>
-          <div className={style.left}>
-            <h4>University of Toronto</h4>
-            <div className={style.detailsRow}>
-              <label>Student</label>
-              <p>Jan 2025 - Dec 2026</p>
-            </div>
-            <div className={style.detailsRow}>
-              <label>Grade</label>
-              <p>3.0/4.0</p>
-            </div>
-          </div>
-          <div className={style.right}>
-            <h4>Certificate of web training</h4>
-            <label>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet
-              dapibus nibh ut faucibus nunc, egestas id amet porttitor. Pulvinar
-              quisque sed amet, nulla nunc. Eleifend sodales posuere fusce
-              tempus etiam et pellentesque. Molestie risus enim neque eget dui.
-            </label>
-          </div>
-        </div>
-        <div className={style.divider} />
-        <div className={style.row}>
-          <div className={style.left}>
-            <h4>University of Toronto</h4>
-            <div className={style.detailsRow}>
-              <label>Student</label>
-              <p>Jan 2025 - Dec 2026</p>
-            </div>
-            <div className={style.detailsRow}>
-              <label>Grade</label>
-              <p>3.0/4.0</p>
-            </div>
-          </div>
-          <div className={style.right}>
-            <h4>Certificate of web training</h4>
-            <label>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet
-              dapibus nibh ut faucibus nunc, egestas id amet porttitor. Pulvinar
-              quisque sed amet, nulla nunc. Eleifend sodales posuere fusce
-              tempus etiam et pellentesque. Molestie risus enim neque eget dui.
-            </label>
-          </div>
-        </div>
+            <div className={style.divider} />
+          </>
+        ))}
       </div>
     </div>
   );
