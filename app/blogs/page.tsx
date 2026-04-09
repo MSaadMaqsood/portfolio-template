@@ -78,7 +78,14 @@ const BlogPage = () => {
       <br />
 
       {/* 📚 Blog List */}
-      <div style={{ display: "flex", flexDirection: "row", gap: 20, flexWrap:"wrap" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 20,
+          flexWrap: "wrap",
+        }}
+      >
         {blogs.map((blog) => (
           <div
             key={blog.id}
@@ -140,16 +147,16 @@ const BlogPage = () => {
               >
                 Read more
               </summary>
-              <p
+              <div
                 style={{
                   marginTop: 10,
                   fontSize: 14,
                   color: "#374151",
                   lineHeight: 1.7,
                 }}
-              >
-                {blog.description}
-              </p>
+                dangerouslySetInnerHTML={{ __html: blog.description }}
+              />
+              
             </details>
           </div>
         ))}
