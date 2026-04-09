@@ -3,6 +3,7 @@
 import Button from "@/components/common/Button/Button";
 import InputField from "@/components/common/InputField/InputField";
 import ProfileUpload from "@/components/common/ProfileUpload/ProfileUpload";
+import ResumeUpload from "@/components/common/ResumeUpload/ResumeUpload";
 import TextField from "@/components/common/TextField/TextField";
 import React, { useEffect, useState } from "react";
 
@@ -205,6 +206,8 @@ const Dashboard = () => {
         <div onClick={updateBio}>
           <Button label="Update Bio" width="100%" />
         </div>
+
+        <ResumeUpload />
       </div>
       <div style={{ width: "45dvw" }}>
         {/* LANGUAGES */}

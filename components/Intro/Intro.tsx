@@ -24,15 +24,15 @@ const Intro = () => {
       <RandomIcon />
       <div className={style.InfoCon}>
         <label className={style.mainTitle}>
-          I’m Radu Radu <br />
+          I’m a {" "}
           <label style={{ color: "var(--colorYellow)" }}>
             Cybersecurity
-          </label>{" "}
+          </label><br />
           Expert!
         </label>
         <h6 className={style.description}>{form.bio}</h6>
-        <Link href={`/blogs`}>
-          <Button label="Blogs" endIcon={<SendIcon />} width="154px" />
+        <Link href={`${API}/uploads/${form.resume}`}>
+          <Button label="Download CV" endIcon={<SendIcon />} width="154px" />
         </Link>
       </div>
       <div>
