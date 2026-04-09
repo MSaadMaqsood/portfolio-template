@@ -4,7 +4,7 @@ import Button from "../common/Button/Button";
 import SendIcon from "@/icons/SendIcon";
 import Image from "next/image";
 import Link from "next/link";
-const API = "http://localhost/portfolio-php";
+const API = "http://46.101.217.170//portfolio-php";
 
 const Intro = () => {
   const userId = 1; // for now static (later from auth)

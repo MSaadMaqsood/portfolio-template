@@ -18,7 +18,7 @@ const LoginPage = () => {
     }
 
     console.log("Login Data:", { username, password });
-    await fetch("http://localhost/portfolio-php/login.php", {
+    await fetch("http://46.101.217.170//portfolio-php/login.php", {
       method: "POST",
       body: JSON.stringify({
         username,

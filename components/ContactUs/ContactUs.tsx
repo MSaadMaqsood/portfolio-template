@@ -6,7 +6,7 @@ import InputField from "../common/InputField/InputField";
 import TextField from "../common/TextField/TextField";
 import Button from "../common/Button/Button";
 
-const API = "http://localhost/portfolio-php";
+const API = "http://46.101.217.170//portfolio-php";
 
 const ContactUs = () => {
   const [mode, setMode] = useState<"insecure" | "secure">("insecure");
