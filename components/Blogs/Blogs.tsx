@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import style from "./style.module.css";
 import Image from "next/image";
+import Button from "../common/Button/Button";
+import Link from "next/link";
+import SendIcon from "@/icons/SendIcon";
 
 type BlogType = {
   id: number;
@@ -56,6 +59,9 @@ const Blogs = () => {
           </div>
         ))}
       </div>
+      <Link href={`/blogs`}>
+        <Button label="All blogs" endIcon={<SendIcon />} width="154px" />
+      </Link>
     </div>
   );
 };
