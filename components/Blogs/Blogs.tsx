@@ -11,7 +11,7 @@ type BlogType = {
   created_at: string;
 };
 
-const API = "http://46.101.217.170//portfolio-php";
+const API = "http://46.101.217.170/portfolio-php";
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState<BlogType[]>([]);

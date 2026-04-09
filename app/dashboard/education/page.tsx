@@ -14,7 +14,7 @@ type Education = {
   degree: string;
   description: string;
 };
-const API = "http://46.101.217.170//portfolio-php";
+const API = "http://46.101.217.170/portfolio-php";
 
 const EducationSection = () => {
   const userId = 1; // for now static (later from auth)

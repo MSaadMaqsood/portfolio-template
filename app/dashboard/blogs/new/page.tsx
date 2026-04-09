@@ -6,7 +6,7 @@ import TextField from "@/components/common/TextField/TextField";
 import { useState } from "react";
 import styles from "./ProfileUpload.module.css";
 
-const API = "http://46.101.217.170//portfolio-php";
+const API = "http://46.101.217.170/portfolio-php";
 
 const BlogSection = () => {
   const [blogs, setBlogs] = useState({
