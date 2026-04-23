@@ -2,7 +2,8 @@
 
 import { useState, ChangeEvent, useEffect } from "react";
 import styles from "./ProfileUpload.module.css";
-const API = "https://cyber.radudenie.me/portfolio-php";
+const API = process.env.NEXT_PUBLIC_API_URL;
+
 
 export default function ProfileUpload({
   defaultImg,

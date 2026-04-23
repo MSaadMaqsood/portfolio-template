@@ -3,7 +3,8 @@
 import Button from "@/components/common/Button/Button";
 import InputField from "@/components/common/InputField/InputField";
 import TextField from "@/components/common/TextField/TextField";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 type Education = {
   id: number;
@@ -14,11 +15,13 @@ type Education = {
   degree: string;
   description: string;
 };
-const API = "https://cyber.radudenie.me/portfolio-php";
+const API = process.env.NEXT_PUBLIC_API_URL;
+
 
 const EducationSection = () => {
   const userId = 1; // for now static (later from auth)
 
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [education, setEducation] = useState<Education[]>([]);
   const [newEducation, setNewEducation] = useState<Education>({
     id: 0,
@@ -38,11 +41,15 @@ const EducationSection = () => {
   }, []);
 
   const addEducation = async () => {
+    const token = recaptchaRef.current?.getValue();
+    if (!token) return alert("Please verify you are human");
+
     const res = await fetch(`${API}/add-education.php`, {
       method: "POST",
       body: JSON.stringify({
         user_id: userId,
         ...newEducation,
+        recaptcha_token: token,
       }),
     });
 
@@ -59,6 +66,7 @@ const EducationSection = () => {
       degree: "",
       description: "",
     });
+    recaptchaRef.current?.reset();
   };
 
   const removeEducation = async (index: number) => {
@@ -208,6 +216,10 @@ const EducationSection = () => {
           rows={3}
         />
         <br />
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+        />
         <div onClick={addEducation}>
           <Button label="Add Education" width="200px" />
         </div>

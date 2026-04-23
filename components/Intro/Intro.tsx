@@ -4,7 +4,8 @@ import Button from "../common/Button/Button";
 import SendIcon from "@/icons/SendIcon";
 import Image from "next/image";
 import Link from "next/link";
-const API = "https://cyber.radudenie.me/portfolio-php";
+const API = process.env.NEXT_PUBLIC_API_URL;
+
 
 const Intro = () => {
   const userId = 1; // for now static (later from auth)

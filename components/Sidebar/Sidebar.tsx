@@ -14,7 +14,8 @@ type Item = {
   percentage: string;
 };
 
-const API = "https://cyber.radudenie.me/portfolio-php";
+const API = process.env.NEXT_PUBLIC_API_URL;
+
 const Sidebar = () => {
   const userId = 1; // for now static (later from auth)
 

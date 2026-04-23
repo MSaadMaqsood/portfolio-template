@@ -14,7 +14,8 @@ type BlogType = {
   created_at: string;
 };
 
-const API = "https://cyber.radudenie.me/portfolio-php";
+const API = process.env.NEXT_PUBLIC_API_URL;
+
 
 const Blogs = () => {
   const [blogs, setBlogs] = useState<BlogType[]>([]);

@@ -8,7 +8,8 @@ type WorkType = {
   title: string;
   description: string;
 };
-const API = "https://cyber.radudenie.me/portfolio-php";
+const API = process.env.NEXT_PUBLIC_API_URL;
+
 const WorkHistory = () => {
   const userId = 1; // for now static (later from auth)
 

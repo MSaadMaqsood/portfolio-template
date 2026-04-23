@@ -5,7 +5,8 @@ import InputField from "@/components/common/InputField/InputField";
 import ProfileUpload from "@/components/common/ProfileUpload/ProfileUpload";
 import ResumeUpload from "@/components/common/ResumeUpload/ResumeUpload";
 import TextField from "@/components/common/TextField/TextField";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 type Item = {
   id?: number;
@@ -13,11 +14,13 @@ type Item = {
   percentage: string;
 };
 
-const API = "https://cyber.radudenie.me/portfolio-php";
+const API = process.env.NEXT_PUBLIC_API_URL;
+
 
 const Dashboard = () => {
   const userId = 1; // for now static (later from auth)
 
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [form, setForm] = useState<any>({});
   const [languages, setLanguages] = useState<Item[]>([]);
   const [skills, setSkills] = useState<Item[]>([]);
@@ -48,12 +51,16 @@ const Dashboard = () => {
   // 🔹 UPDATE BIO
   // =========================
   const updateBio = async () => {
+    const token = recaptchaRef.current?.getValue();
+    if (!token) return alert("Please verify you are human");
+
     await fetch(`${API}/update-bio.php`, {
       method: "POST",
-      body: JSON.stringify({ ...form, id: userId }),
+      body: JSON.stringify({ ...form, id: userId, recaptcha_token: token }),
     });
 
     alert("Bio Updated");
+    recaptchaRef.current?.reset();
   };
 
   // =========================
@@ -203,6 +210,10 @@ const Dashboard = () => {
           rows={4}
         />
         <br />
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+        />
         <div onClick={updateBio}>
           <Button label="Update Bio" width="100%" />
         </div>
@@ -249,12 +260,15 @@ const Dashboard = () => {
           <div
             onClick={async () => {
               if (!newLanguage.name) return;
+              const token = recaptchaRef.current?.getValue();
+              if (!token) return alert("Please verify you are human");
 
               const res = await fetch(`${API}/add-language.php`, {
                 method: "POST",
                 body: JSON.stringify({
                   user_id: userId,
                   ...newLanguage,
+                  recaptcha_token: token,
                 }),
               });
 
@@ -262,6 +276,7 @@ const Dashboard = () => {
 
               setLanguages([...languages, { ...newLanguage, id: data.id }]);
               setNewLanguage({ name: "", percentage: "" });
+              recaptchaRef.current?.reset();
             }}
           >
             <Button label="Add" width="100px" />
@@ -305,12 +320,15 @@ const Dashboard = () => {
           <div
             onClick={async () => {
               if (!newSkill.name) return;
+              const token = recaptchaRef.current?.getValue();
+              if (!token) return alert("Please verify you are human");
 
               const res = await fetch(`${API}/add-skill.php`, {
                 method: "POST",
                 body: JSON.stringify({
                   user_id: userId,
                   ...newSkill,
+                  recaptcha_token: token,
                 }),
               });
 
@@ -318,6 +336,7 @@ const Dashboard = () => {
 
               setSkills([...skills, { ...newSkill, id: data.id }]);
               setNewSkill({ name: "", percentage: "" });
+              recaptchaRef.current?.reset();
             }}
           >
             <Button label="Add" width="100px" />

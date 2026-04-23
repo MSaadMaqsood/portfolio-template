@@ -3,12 +3,15 @@
 import Button from "@/components/common/Button/Button";
 import InputField from "@/components/common/InputField/InputField";
 import TextField from "@/components/common/TextField/TextField";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styles from "./ProfileUpload.module.css";
+import ReCAPTCHA from "react-google-recaptcha";
 
-const API = "https://cyber.radudenie.me/portfolio-php";
+const API = process.env.NEXT_PUBLIC_API_URL;
+
 
 const BlogSection = () => {
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [blogs, setBlogs] = useState({
     title: "",
     summary: "",
@@ -29,10 +32,14 @@ const BlogSection = () => {
 
   // ➕ Add Blog
   const addBlog = async () => {
+    const token = recaptchaRef.current?.getValue();
+    if (!token) return alert("Please verify you are human");
+
     const formData = new FormData();
     formData.append("title", blogs.title);
     formData.append("summary", blogs.summary);
     formData.append("description", blogs.description);
+    formData.append("recaptcha_token", token);
 
     if (file) {
       formData.append("image", file);
@@ -54,6 +61,7 @@ const BlogSection = () => {
     });
     setImage(null);
     setFile(null);
+    recaptchaRef.current?.reset();
   };
 
   return (
@@ -112,6 +120,10 @@ const BlogSection = () => {
 
         <br />
 
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+        />
         <div onClick={addBlog}>
           <Button label="Add Blog" width="200px" />
         </div>
