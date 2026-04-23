@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import InputField from "@/components/common/InputField/InputField";
 
-const API = "http://46.101.217.170/portfolio-php";
+const API = "https://cyber.radudenie.me/portfolio-php";
 
 type Blog = {
   id: number;

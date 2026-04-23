@@ -2,7 +2,7 @@
 
 import { useState, ChangeEvent, useEffect } from "react";
 import styles from "./ProfileUpload.module.css";
-const API = "http://46.101.217.170/portfolio-php";
+const API = "https://cyber.radudenie.me/portfolio-php";
 
 export default function ProfileUpload({
   defaultImg,
