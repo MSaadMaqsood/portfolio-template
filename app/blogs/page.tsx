@@ -154,9 +154,9 @@ const BlogPage = () => {
                   color: "#374151",
                   lineHeight: 1.7,
                 }}
-                dangerouslySetInnerHTML={{ __html: blog.description }}
-              />
-              
+              >
+                {blog.description}
+              </div>
             </details>
           </div>
         ))}
